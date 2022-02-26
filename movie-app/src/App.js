@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
-import './index.css';
-import MovieList from './components/MovieList/MovieList';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import MovieList from './components/MovieList/MovieList';
+import MovieLogo from './components/MovieLogo/MovieLogo';
+import MovieSearch from './components/MovieSearch/MovieSearch';
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -21,6 +22,10 @@ function App() {
 
   return (
     <div className="App">
+      <div className="header">
+        <MovieLogo logo="Logo" />
+        <MovieSearch />
+      </div>
       <MovieList movies={movies} />
     </div>
   );

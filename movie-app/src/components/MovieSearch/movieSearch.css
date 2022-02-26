@@ -1,0 +1,17 @@
+.form-control {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    border-radius: 50px;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    box-shadow: 4px 4px 8px 0px rgba(1, 0, 11, 1);
+}
+.form-control::placeholder {
+    color: #fff;
+}
+.form-control:focus {
+    border: 2px solid var(--primary-color);
+    background-color: var(--primary-color);
+    box-shadow: 4px 4px 8px 0px rgba(1, 0, 11, 1);
+    color: #fff;
+}

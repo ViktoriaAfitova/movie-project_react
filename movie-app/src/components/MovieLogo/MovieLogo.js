@@ -1,9 +1,11 @@
 import React from 'react';
+import Logo from '../MovieLogo/video-camera.png';
+import div from './movieLogo.css';
 
-const MovieLogo = (props) => {
+const MovieLogo = () => {
   return (
 		<>
-			<h1>{props.logo}</h1>
+			<img className='logo' src={Logo} />
 		</>
   )
 }

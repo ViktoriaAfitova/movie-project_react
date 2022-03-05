@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import div from './movieSearch.css';
 
 const MovieSearch = (props) => {
+  const [movies, setMovies] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
+
+  const getMovieRequest = async (searchValue) => {
+    const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=df9d5da7`;
+    const response = await fetch(url);
+    const responseJson = await response.json();
+
+    if (responseJson.Search) {
+      setMovies(responseJson.Search);
+    }
+  }
+
+  useEffect(() => {
+    getMovieRequest(searchValue);
+  }, [searchValue])
+
   return (
     <div>
         <input

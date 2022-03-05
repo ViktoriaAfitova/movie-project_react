@@ -3,21 +3,25 @@ import MovieDetails from '../MovieDetails/MovieDetails';
 import div from './movieList.css';
 
 const MovieList = (props) => {
-  const [showDetails, setDetails] = useState(false);
+  const [details, setDetails] = useState(false);
+
+  const showDetails = () => {
+    setDetails(true)
+  }
 
   return (
 		<div className="movie-container">
       {props.movies.map((movie, id) => (
-        <div className="card" key={movie.id} style={{"width": "18rem"}}>
+        <div className="card" key={id} style={{"width": "18rem"}}>
           <div className="row">
             <img src={movie.Poster} className="card-img-top" alt="movie"></img>
-            <div className="overlay" onClick={() => setDetails(true)}><span className="details">Details</span>
+            <div className="overlay" onClick={showDetails}><span className="details">Details</span>
             </div>
           </div>
         </div>
       ))}
       <MovieDetails
-        visible={showDetails}
+        visible={details}
         onCancel={() => setDetails(false)}
         closeBtnShow
       >

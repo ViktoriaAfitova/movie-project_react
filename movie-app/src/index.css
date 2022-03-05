@@ -1,23 +1,9 @@
-:root {
-  --primary-color: #22254b;
-  --secondary-color: #373b69;
-  --text-color: #fff;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Merriweather:wght@700&family=Montserrat:wght@100&family=Open+Sans:ital@0;1&display=swap');
+
 * {
   box-sizing: border-box;
 }
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--primary-color);
-  color: var(--text-color);
-}
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 20px;
-  background-color: var(--secondary-color);
-  color: var(--text-color);
 }

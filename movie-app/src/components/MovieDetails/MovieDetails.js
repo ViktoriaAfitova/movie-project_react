@@ -3,17 +3,17 @@ import div from "./movieDetails.css";
 
 const MovieDetails = ({
   visible = false,
-  title,
-  closeBtnShow = false,
-  Poster,
+  // title,
+  // closeBtnShow = false,
+  // Poster,
   Title,
-  Released,
-  Genre,
-  Country,
-  Director,
-  Writer,
-  Actors,
-  Awards,
+  // Released,
+  // Genre,
+  // Country,
+  // Director,
+  // Writer,
+  // Actors,
+  // Awards,
   onCancel,
   // onConfirm,
 }) => {
@@ -37,7 +37,7 @@ const MovieDetails = ({
             ></button>
           </div>
           <div className="modal-body">
-            <p>Title:</p>
+            <p>Title: {Title}</p>
             <p>Released:</p>
             <p>Genre:</p>
             <p>Country:</p>

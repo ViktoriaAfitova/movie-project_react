@@ -7,9 +7,9 @@ import Movies from '../pages/Movies/Movies';
 const AppRouter = () => {
   return (
     <Routes>
-      <Route path='/' element={Trending} exact/>
-      <Route path='/movies' element={Movies}/>
-      <Route path='/Tv' element={Tv}/>
+      <Route path='/' element={<Trending/>} exact/>
+      <Route path='/movies' element={<Movies/>}/>
+      <Route path='/Tv' element={<Tv/>}/>
     </Routes>
   )
 }

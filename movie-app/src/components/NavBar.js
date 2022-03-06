@@ -24,7 +24,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="navbar  navbar-expand-lg navbar-dark bg-dark ">
+    <nav className="navbar  navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid justify-content-center">
         <ul className="navbar-nav">
           {links.map((link, index) => (

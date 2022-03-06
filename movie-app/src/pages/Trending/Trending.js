@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import TrendingMoviesList from '../../components/TrendingMoviesList/TrendingMoviesList';
+import './trending.css';
 
 const Trending = () => {
   const [content, setContent] = useState([]);
@@ -17,8 +18,8 @@ const Trending = () => {
 
   return (
     <div>
-      <span className='pageTitle'>Trending</span>
-      <div>
+      <span className='page-title'>Trending</span>
+      <div className='trending'>
         {content && content.map((c) => (
           <TrendingMoviesList
             key={c.id}

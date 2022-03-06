@@ -3,7 +3,7 @@ import React from 'react';
 const Tv = () => {
   return (
     <div>
-      <span className='pageTitle'>Tv</span>
+      <span className='page-title'>Tv</span>
     </div>
   )
 }

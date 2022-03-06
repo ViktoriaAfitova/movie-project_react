@@ -4,7 +4,7 @@ import './header.css';
 
 const Header = () => {
   return (
-    <div className='header'>
+    <div className='header' onClick={() => window.scroll(0,0)}>
 			<div>
         <img className='logo' src={Logo} alt="" />
 			</div>

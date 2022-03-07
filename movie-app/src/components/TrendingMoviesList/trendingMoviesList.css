@@ -7,6 +7,7 @@
     margin: 5px 0;
     background-color: #282c34;
     border-radius: 10px;
+    position: relative;
 }
 .movies-list:hover {
     background-color: #fff;

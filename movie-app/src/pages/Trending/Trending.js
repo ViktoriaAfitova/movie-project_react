@@ -10,12 +10,12 @@ const Trending = () => {
 
   const fetchTrending = async () => {
     const { data } = await axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=2b7d819095d4001352de4aa47e90ebc2&page=${page}`)
-    console.log(data.results);
     setContent(data.results)
   }
 
   useEffect(() => {
     fetchTrending();
+    // eslint-disable-next-line
   }, [page])
 
   return (

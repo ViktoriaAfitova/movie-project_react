@@ -3,7 +3,7 @@ import axios from 'axios';
 import TrendingMoviesList from '../../components/TrendingMoviesList/TrendingMoviesList';
 import PagePagination from '../../components/PagePagination/PagePagination';
 import Genres from '../../components/Genres/Genres';
-import useGenres from '../../hooks/useGenre';
+import useGenre from '../../hooks/useGenre';
 
 const Movies = () => {
   const [page, setPage] = useState(1);
@@ -11,12 +11,11 @@ const Movies = () => {
   const [numOfPages, setNumOfPages] = useState();
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState([]);
-  const genreForURL = useGenres(selectedGenre);
+  const genreForURL = useGenre(selectedGenre);
 
   const fetchMovies = async () => {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/discover/movie?api_key=2b7d819095d4001352de4aa47e90ebc2&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreForURL}`)
-    console.log(data)
     setContent(data.results);
     setNumOfPages(data.total_pages)
   }

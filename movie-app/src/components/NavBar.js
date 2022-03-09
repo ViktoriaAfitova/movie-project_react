@@ -14,7 +14,7 @@ const NavBar = () => {
       link: "/movies",
     },
     {
-      name: "Tv",
+      name: "Tv Series",
       link: "/Tv",
     },
   ];

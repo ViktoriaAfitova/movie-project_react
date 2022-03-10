@@ -10,7 +10,7 @@ html {
   min-height: 100vh;
   background-color: var(--primary-color);
 	color: var(--text-color);
-	padding-top: 90px;
+	padding-top: 100px;
 }
 .page-title {
   text-transform: uppercase;

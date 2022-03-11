@@ -1,40 +1,53 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
+import Context from "../../components/context/context";
+import { SET_SEARCHMOVIE } from "../../components/reducer/reducer";
 import PagePagination from "../../components/PagePagination/PagePagination";
 import TrendingMoviesList from "../../components/TrendingMoviesList/TrendingMoviesList";
 
-const Search = (props) => {
+const Search = () => {
+  const [query, setQuery] = useState("");
+  const [movies, setMovies] = useState([]);
+  const [content, setContent] = useState([]);
   const [page, setPage] = useState(0);
   const [numOfPages, setNumOfPages] = useState();
   const [type, setType] = useState(0);
-  const [content, setContent] = useState([]);
-  const [searchValue, setSearchValue] = useState("");
+  const { state, dispatch } = useContext(Context);
 
-  const fetchSearch = async () => {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/search/${
-        type ? "tv" : "movie"
-      }?api_key=2b7d819095d4001352de4aa47e90ebc2&language=en-US&query=${searchValue}&page=${page}&include_adult=false`
-    );
-    console.log(data);
-    setContent(data.results);
-    setNumOfPages(data.total_pages);
+  const fetchSearch = async (e) => {
+    // e.preventDefault();
+
+    // const { data } = await axios.get(
+    //   `https://api.themoviedb.org/3/search/movie?api_key=2b7d819095d4001352de4aa47e90ebc2&query=${query}&page=${page}&include_adult=false`
+    // )
+    // setMoviesSearch(data.results)
+
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=2b7d819095d4001352de4aa47e90ebc2&query=${query}&include_adult=false`;
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      console.log(data.results);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-  useEffect(() => {
-    window.scroll(0, 0);
-    fetchSearch();
-  }, [searchValue, page]);
+  // useEffect(() => {
+  //   fetchSearch();
+  // }, []);
 
   return (
-    <div>
+    <>
       <input
         className="form-control"
-        value={props.value}
+        value={query}
+        type="text"
         placeholder="Search"
-        onChange={(e) => props.setSearchValue(e.target.value)}
+        name="query"
+        onChange={(e) => setQuery(e.target.value)}
+        onClick={fetchSearch}
       ></input>
-      <div className="trending">
+      {/* <div className="trending">
         {content &&
           content.map((c) => (
             <TrendingMoviesList
@@ -48,13 +61,13 @@ const Search = (props) => {
             />
           ))}
       </div>
-      {searchValue &&
+      {query &&
         !content &&
         (type ? <h2>Series not found</h2> : <h2>Movie not found</h2>)}
       {numOfPages > 1 && (
         <PagePagination setPage={setPage} numOfPages={numOfPages} />
-      )}
-    </div>
+      )} */}
+    </>
   );
 };
 

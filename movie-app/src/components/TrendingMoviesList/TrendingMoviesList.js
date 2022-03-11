@@ -1,13 +1,14 @@
 import { img_300 } from "../Assets/Img/Img";
 import "./trendingMoviesList.css";
 import Badge from "@material-ui/core/Badge";
+import MovieModal from "../MovieModal/MovieModal";
 
 const TrendingMoviesList = (...data) => {
   return (
-    <div className="movies-list">
+    <MovieModal media_type={data[0].media_type} id={data[0].id}>
       <Badge
         badgeContent={data[0].vote_average}
-        color={data[0].vote_average > 6 ? "primary" : "secondary"}
+        color={data[0].vote_average > 6 ? "secondary" : "primary" }
       />
       <img
         className="movies-item__poster"
@@ -18,7 +19,7 @@ const TrendingMoviesList = (...data) => {
         {data[0].media_type === "tv" ? "Tv Series" : "Movies"}
         <span>{data[0].date}</span>
       </span>
-    </div>
+    </MovieModal>
   );
 };
 

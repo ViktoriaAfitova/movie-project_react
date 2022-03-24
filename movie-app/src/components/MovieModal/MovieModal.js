@@ -51,7 +51,6 @@ export default function MovieModal({ children, media_type, id }, ...data) {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/${media_type}/${id}/videos?api_key=2b7d819095d4001352de4aa47e90ebc2&language=en-US`
     );
-    console.log(data);
     setVideo(data.results[0]?.key);
   };
 
@@ -119,7 +118,7 @@ export default function MovieModal({ children, media_type, id }, ...data) {
                   <div></div>
                   <Button
                     variant="contained"
-                    starIcon={<YouTubeIcon />}
+                    // starIcon={<YouTubeIcon />}
                     color="secondary"
                     target="__blank"
                     href={`https://www.youtube.com/watch?v=${video}`}

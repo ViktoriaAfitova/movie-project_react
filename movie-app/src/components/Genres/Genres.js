@@ -41,7 +41,7 @@ const Genre = ({
   }, []);
 
   return (
-    <div style={{ padding: "10px 0" }}>
+    <div className="genres-container">
       {selectedGenre &&
         selectedGenre.map((genre) => (
           <Chip

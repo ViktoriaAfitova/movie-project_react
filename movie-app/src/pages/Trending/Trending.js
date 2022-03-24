@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import TrendingMoviesList from '../../components/TrendingMoviesList/TrendingMoviesList';
 import './trending.css';
 import PagePagination from '../../components/PagePagination/PagePagination';
+import { setMovie } from '../../components/reducer/reducer';
+import Context from '../../components/context/context';
 
 const Trending = () => {
   const [page, setPage] = useState(1);
   const [content, setContent] = useState([]);
+  const { state, dispatch } = useContext(Context);
 
   const fetchTrending = async () => {
     const { data } = await axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=2b7d819095d4001352de4aa47e90ebc2&page=${page}`)
     setContent(data.results)
+    dispatch(setMovie(data.results))
   }
 
   useEffect(() => {

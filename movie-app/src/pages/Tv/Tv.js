@@ -1,9 +1,10 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import Genres from '../../components/Genres/Genres';
 import TrendingMoviesList from '../../components/TrendingMoviesList/TrendingMoviesList';
 import PagePagination from '../../components/PagePagination/PagePagination';
 import useGenre from '../../hooks/useGenre';
+import Context from '../../components/context/context';
 
 const Tv = () => {
   const [page, setPage] = useState(1);
@@ -12,6 +13,7 @@ const Tv = () => {
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState([]);
   const genreForURL = useGenre(selectedGenre);
+  const {state} = useContext(Context);
 
   const fetchMovies = async () => {
     const { data } = await axios.get(
@@ -19,7 +21,7 @@ const Tv = () => {
     setContent(data.results);
     setNumOfPages(data.total_pages)
   }
-
+  console.log(state)
   useEffect(() => {
     fetchMovies();
   }, [page, genreForURL])
@@ -36,7 +38,18 @@ const Tv = () => {
         setPage={setPage}
       />
       <div className='trending'>
-        {content && content.map((c) => (
+      {/* {content && content.map((c) => ( // if state === ''
+          <TrendingMoviesList
+            key={c.id}
+            id={c.id}
+            poster={c.poster_path}
+            title={c.title || c.name}
+            date={c.first_air_date || c.release_date}
+            media_type={c.media_type}
+            vote_average={c.vote_average}
+          />
+        ))} */}
+        {state.movie && state.movie.map((c) => ( // else
           <TrendingMoviesList
             key={c.id}
             id={c.id}

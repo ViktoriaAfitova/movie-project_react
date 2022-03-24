@@ -5,3 +5,10 @@
     margin: 2px;
     letter-spacing: 1px;
 } */
+.genres-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 10px 40px;
+}

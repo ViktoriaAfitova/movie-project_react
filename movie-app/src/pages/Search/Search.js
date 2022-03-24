@@ -1,40 +1,33 @@
 import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import Context from "../../components/context/context";
-import { SET_SEARCHMOVIE } from "../../components/reducer/reducer";
+import { setMovie } from "../../components/reducer/reducer";
 import PagePagination from "../../components/PagePagination/PagePagination";
 import TrendingMoviesList from "../../components/TrendingMoviesList/TrendingMoviesList";
 
 const Search = () => {
   const [query, setQuery] = useState("");
-  const [movies, setMovies] = useState([]);
   const [content, setContent] = useState([]);
   const [page, setPage] = useState(0);
   const [numOfPages, setNumOfPages] = useState();
   const [type, setType] = useState(0);
   const { state, dispatch } = useContext(Context);
 
-  const fetchSearch = async (e) => {
+  const fetchSearch = async () => {
     // e.preventDefault();
 
-    // const { data } = await axios.get(
-    //   `https://api.themoviedb.org/3/search/movie?api_key=2b7d819095d4001352de4aa47e90ebc2&query=${query}&page=${page}&include_adult=false`
-    // )
-    // setMoviesSearch(data.results)
-
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=2b7d819095d4001352de4aa47e90ebc2&query=${query}&include_adult=false`;
     try {
-      const res = await fetch(url);
-      const data = await res.json();
-      console.log(data.results);
-    } catch (err) {
-      console.log(err);
-    }
+      const { data } = await axios.get( `https://api.themoviedb.org/3/search/movie?api_key=2b7d819095d4001352de4aa47e90ebc2&query=${query}&include_adult=false`)
+      // console.log(data.results);
+      setContent(data.results)
+      dispatch(setMovie(data.results))
+    } catch (err) {}
   };
 
-  // useEffect(() => {
-  //   fetchSearch();
-  // }, []);
+  useEffect(() => {
+    fetchSearch();
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <>
@@ -60,13 +53,13 @@ const Search = () => {
               vote_average={c.vote_average}
             />
           ))}
-      </div>
+      </div> */}
       {query &&
         !content &&
         (type ? <h2>Series not found</h2> : <h2>Movie not found</h2>)}
       {numOfPages > 1 && (
         <PagePagination setPage={setPage} numOfPages={numOfPages} />
-      )} */}
+      )}
     </>
   );
 };

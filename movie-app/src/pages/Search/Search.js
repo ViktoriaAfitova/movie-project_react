@@ -17,10 +17,12 @@ const Search = () => {
     // e.preventDefault();
 
     try {
-      const { data } = await axios.get( `https://api.themoviedb.org/3/search/movie?api_key=2b7d819095d4001352de4aa47e90ebc2&query=${query}&include_adult=false`)
-      // console.log(data.results);
-      setContent(data.results)
-      dispatch(setMovie(data.results))
+      const { data } = await axios.get(
+        `https://api.themoviedb.org/3/search/movie?api_key=2b7d819095d4001352de4aa47e90ebc2&query=${query}&include_adult=false`
+      );
+      setContent(data.results);
+      dispatch(setMovie(data.results.map((r) => r.id)));
+      // console.log(data.results.map(r=> r.id));
     } catch (err) {}
   };
 
@@ -28,6 +30,16 @@ const Search = () => {
     fetchSearch();
     // eslint-disable-next-line
   }, []);
+
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  // };
+
+  const handleKeypress = (e) => {
+    if (e.keyCode === 13) {
+      // handleSubmit();
+    }
+  };
 
   return (
     <>
@@ -39,8 +51,9 @@ const Search = () => {
         name="query"
         onChange={(e) => setQuery(e.target.value)}
         onClick={fetchSearch}
+        onKeyPress={handleKeypress}
       ></input>
-      {/* <div className="trending">
+      <div className="trending">
         {content &&
           content.map((c) => (
             <TrendingMoviesList
@@ -53,7 +66,7 @@ const Search = () => {
               vote_average={c.vote_average}
             />
           ))}
-      </div> */}
+      </div>
       {query &&
         !content &&
         (type ? <h2>Series not found</h2> : <h2>Movie not found</h2>)}

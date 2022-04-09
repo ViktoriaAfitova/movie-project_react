@@ -21,6 +21,8 @@
 	height: 50px;
 }
 .form-control {
+	width: 500px;
+	margin: 50px auto;
 	background-color: transparent;
 	border: 2px solid var(--primary-color);
 	border-radius: 50px;

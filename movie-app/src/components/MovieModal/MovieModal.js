@@ -118,7 +118,6 @@ export default function MovieModal({ children, media_type, id }, ...data) {
                   <div></div>
                   <Button
                     variant="contained"
-                    // starIcon={<YouTubeIcon />}
                     color="secondary"
                     target="__blank"
                     href={`https://www.youtube.com/watch?v=${video}`}

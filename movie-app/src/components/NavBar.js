@@ -17,10 +17,10 @@ const NavBar = () => {
       name: "Tv Series",
       link: "/Tv",
     },
-    // {
-    //   name: "Search",
-    //   link: "/Search",
-    // },
+    {
+      name: "Search",
+      link: "/Search",
+    },
   ];
 
   const toggleMenu = () => {

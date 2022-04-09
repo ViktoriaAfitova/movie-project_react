@@ -12,15 +12,23 @@ const Trending = () => {
   const { state, dispatch } = useContext(Context);
 
   const fetchTrending = async () => {
-    const { data } = await axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=2b7d819095d4001352de4aa47e90ebc2&page=${page}`)
+
+    const { data } = await axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=2b7d819095d4001352de4aa47e90ebc2&page=${page}&query=${state.query}`)
     setContent(data.results)
-    dispatch(setMovie(data.results))
+    // dispatch(setMovie(data.results))
   }
+
 
   useEffect(() => {
     fetchTrending();
     // eslint-disable-next-line
   }, [page])
+
+
+  useEffect(()=> {
+    console.log(state.movies)
+     setContent(content.filter(c=>state.movies.includes(c.id)))
+  }, [state.movies])
 
   return (
     <div>

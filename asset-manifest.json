@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/movie-project_react/static/css/main.e47fdce3.css",
+    "main.js": "/movie-project_react/static/js/main.8c81f2b1.js",
+    "static/media/video-camera.png": "/movie-project_react/static/media/video-camera.bd9587dc6931b9c20f7f.png",
+    "index.html": "/movie-project_react/index.html",
+    "main.e47fdce3.css.map": "/movie-project_react/static/css/main.e47fdce3.css.map",
+    "main.8c81f2b1.js.map": "/movie-project_react/static/js/main.8c81f2b1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e47fdce3.css",
+    "static/js/main.8c81f2b1.js"
+  ]
+}

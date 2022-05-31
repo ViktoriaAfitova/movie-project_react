@@ -4,6 +4,7 @@ import Context from "../../components/context/context";
 import { setMovie } from "../../components/reducer/reducer";
 import PagePagination from "../../components/PagePagination/PagePagination";
 import TrendingMoviesList from "../../components/TrendingMoviesList/TrendingMoviesList";
+import './search.css';
 
 const Search = () => {
   const [query, setQuery] = useState("");
